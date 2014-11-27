@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Roma. All rights reserved.
 //
 
-import UIKit
 
 class WhatAboutModel: NSObject {
    

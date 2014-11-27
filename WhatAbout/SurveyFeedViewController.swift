@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SurveyFeedViewController: UIViewController {
+class SurveyFeedViewController: UIViewController, SurveyFeedManagerDelegate {
   
   required init(coder aDecoder: NSCoder) {
     surveyFeedManager = SurveyFeedManager()
     super.init(coder: aDecoder)
+    
   }
   
   @IBOutlet weak var tableView: UITableView!
@@ -23,8 +24,7 @@ class SurveyFeedViewController: UIViewController {
     
     surveyFeedManager = SurveyFeedManager(tableView: tableView)
     surveyFeedManager.tableView.reloadData()
-    
-    // Do any additional setup after loading the view.
+    surveyFeedManager.delegate = self
   }
   
   override func didReceiveMemoryWarning() {
@@ -32,15 +32,17 @@ class SurveyFeedViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
   
-  
-  /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
+  func surveySelected(survey: Survey) {
+    performSegueWithIdentifier("SurveyDetailSegue", sender: survey)
   }
-  */
   
+  
+  // MARK: - Navigation
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "SurveyDetailSegue" {
+      let destinationVC = segue.destinationViewController as TakeSurveyViewController
+      let selectedSurvay = sender as Survey
+      destinationVC.survey = selectedSurvay
+    }
+  }
 }

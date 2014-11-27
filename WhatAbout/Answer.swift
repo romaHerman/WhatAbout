@@ -10,4 +10,5 @@ class Answer: RLMObject {
   dynamic var surveyID = ""
   dynamic var text = ""
   dynamic var rate = 0.0
+  dynamic var answerID = ""
 }

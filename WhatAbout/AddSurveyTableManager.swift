@@ -8,9 +8,17 @@
 
 import UIKit
 
-class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSource {
+protocol AddSurveyTableManagerDelegate {
+  func canSaveSurvey(Bool)
+}
+
+class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSource, SurveyTextTableViewCellDelegate, AnswerTableViewCellDelegate {
+  
   let tableView: UITableView!
   var answers: Array<String> = [ ]
+  var surveyQuestion = ""
+  
+  var delegate:AddSurveyTableManagerDelegate?
   
   override init() {
     super.init()
@@ -22,7 +30,8 @@ class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSourc
     tableView.dataSource = self
     self.tableView = tableView
   }
-  
+
+// MARK: TableView Datasource
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 3
   }
@@ -73,7 +82,9 @@ class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSourc
     
     switch indexPath.section {
     case 0:
-      cell = tableView.dequeueReusableCellWithIdentifier("SurveyTextTableViewCell") as SurveyTextTableViewCell
+      let surveyCell: SurveyTextTableViewCell = tableView.dequeueReusableCellWithIdentifier("SurveyTextTableViewCell") as SurveyTextTableViewCell
+      surveyCell.delegate = self
+      cell = surveyCell
       break
     case 1:
       let answerCell: AnswerTableViewCell = tableView.dequeueReusableCellWithIdentifier("AnswerTableViewCell") as AnswerTableViewCell
@@ -81,6 +92,7 @@ class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSourc
       if !answer.isEmpty {
         answerCell.answerText.text = answer
       }
+      answerCell.delegate = self
       cell = answerCell
     case 2:
       cell = tableView.dequeueReusableCellWithIdentifier("AddAnswerTableViewCell") as AddAnswerTableViewCell
@@ -93,11 +105,10 @@ class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSourc
     
     return cell
   }
-  
+// MARK: Tableview delegate
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     
     if indexPath.section == 2 {
-      NSLog("sss")
       answers.append("")
       
       tableView.beginUpdates()
@@ -105,6 +116,34 @@ class AddSurveyTableManager: NSObject, UITableViewDelegate, UITableViewDataSourc
       tableView.endUpdates()
     }
     
+  }
+  
+// MARK: Cell Delegates
+  
+  func surveyQuestionEntered(question: String) {
+    surveyQuestion = question
+    checkIfSurveyDayaEnough()
+  }
+  
+  func answerTextAdded(cell: AnswerTableViewCell) {
+    if let cellIndexPath: NSIndexPath = tableView.indexPathForCell(cell) {
+      answers[cellIndexPath.row] = cell.answerText.text
+      checkIfSurveyDayaEnough()
+    }
+  }
+  
+// MARK: SurveyManager methods
+  
+  func getSurveyData () -> (String, Array<String>) {
+    return (surveyQuestion, answers)
+  }
+  
+  func checkIfSurveyDayaEnough() {
+    if countElements(surveyQuestion) > 0 && answers.count > 0 {
+      delegate?.canSaveSurvey(true)
+    } else {
+      delegate?.canSaveSurvey(false)
+    }
   }
   
 }

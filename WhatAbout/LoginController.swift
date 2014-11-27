@@ -6,8 +6,18 @@
 //  Copyright (c) 2014 Roma. All rights reserved.
 //
 
-import Cocoa
-
 class LoginController: NSObject {
-
+  
+  class func enableAnonymousUser() {
+    PFUser.enableAutomaticUser()
+    PFUser.currentUser().incrementKey("RunCount")
+    PFUser.currentUser().saveInBackgroundWithBlock { (status, error) -> Void in
+      
+    }
+  }
+  
+  class func getUserID() -> String {
+    return PFUser.currentUser().objectId
+  }
+  
 }

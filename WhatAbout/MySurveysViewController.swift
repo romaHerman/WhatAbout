@@ -17,16 +17,27 @@ class MySurveysViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   var surveyFeedManager: SurveyFeedManager
+  var notificationToken: RLMNotificationToken?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    surveyFeedManager = SurveyFeedManager(tableView: tableView)
-    surveyFeedManager.tableView.reloadData()
-    
-    // Do any additional setup after loading the view.
+    startObservingDataUpdates()
+    setUpTableViewManager()
   }
   
+//MARK: RealmMethods
+  func startObservingDataUpdates() {
+    // Set realm notification block
+    notificationToken = RLMRealm.defaultRealm().addNotificationBlock { note, realm in
+      self.surveyFeedManager.reloadData()
+    }
+  }
+  
+//MARK: Custom Methods
+  func setUpTableViewManager() {
+    surveyFeedManager = SurveyFeedManager(tableView: tableView)
+    surveyFeedManager.reloadData()
+  }
 
     /*⤴︎
     // MARK: - Navigation

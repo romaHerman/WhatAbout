@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DB2464C1A21EEF400CA4860 /* WhatAboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2464B1A21EEF400CA4860 /* WhatAboutModel.swift */; };
+		1DB246511A21FEEF00CA4860 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB246501A21FEEF00CA4860 /* UIColorExtensions.swift */; };
+		1DB246531A223C6400CA4860 /* WADataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB246521A223C6400CA4860 /* WADataController.swift */; };
+		1DB246551A228DED00CA4860 /* WARemoteDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB246541A228DED00CA4860 /* WARemoteDataController.swift */; };
+		1DB246571A22933B00CA4860 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB246561A22933B00CA4860 /* LoginController.swift */; };
+		1DB246591A24676E00CA4860 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB246581A24676E00CA4860 /* RLMSupport.swift */; };
+		1DB2465B1A25D34900CA4860 /* TakeSurveyTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2465A1A25D34900CA4860 /* TakeSurveyTableManager.swift */; };
+		1DB2465D1A25D38E00CA4860 /* TakeSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2465C1A25D38E00CA4860 /* TakeSurveyViewController.swift */; };
+		1DB2465F1A25D74C00CA4860 /* TakeSurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB2465E1A25D74C00CA4860 /* TakeSurveyCell.swift */; };
+		1DB246611A27BFE200CA4860 /* ProcessSurveyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB246601A27BFE200CA4860 /* ProcessSurveyModel.swift */; };
 		C4EFD1ED1A18F15500C9D581 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EFD1EC1A18F15500C9D581 /* AppDelegate.swift */; };
 		C4EFD1F21A18F15500C9D581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4EFD1F01A18F15500C9D581 /* Main.storyboard */; };
 		C4EFD1F41A18F15500C9D581 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4EFD1F31A18F15500C9D581 /* Images.xcassets */; };
@@ -38,6 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DB2464B1A21EEF400CA4860 /* WhatAboutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatAboutModel.swift; sourceTree = "<group>"; };
+		1DB246501A21FEEF00CA4860 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		1DB246521A223C6400CA4860 /* WADataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WADataController.swift; sourceTree = "<group>"; };
+		1DB246541A228DED00CA4860 /* WARemoteDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WARemoteDataController.swift; sourceTree = "<group>"; };
+		1DB246561A22933B00CA4860 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		1DB246581A24676E00CA4860 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		1DB2465A1A25D34900CA4860 /* TakeSurveyTableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeSurveyTableManager.swift; sourceTree = "<group>"; };
+		1DB2465C1A25D38E00CA4860 /* TakeSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeSurveyViewController.swift; sourceTree = "<group>"; };
+		1DB2465E1A25D74C00CA4860 /* TakeSurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeSurveyCell.swift; sourceTree = "<group>"; };
+		1DB246601A27BFE200CA4860 /* ProcessSurveyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessSurveyModel.swift; sourceTree = "<group>"; };
 		216038ED03E445B118E4E52B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7646506C06CD865DA54202BE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C4EFD1E71A18F15500C9D581 /* WhatAbout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatAbout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +104,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DB2464D1A21F00400CA4860 /* FeedVCGroup */ = {
+			isa = PBXGroup;
+			children = (
+				C4EFD21A1A19003600C9D581 /* SurveyFeedViewController.swift */,
+			);
+			name = FeedVCGroup;
+			sourceTree = "<group>";
+		};
+		1DB2464E1A21F01600CA4860 /* MySurveysFeedVCGroup */ = {
+			isa = PBXGroup;
+			children = (
+				C4EFD2221A194BB700C9D581 /* MySurveysViewController.swift */,
+				C4EFD2241A1955E400C9D581 /* AddSurveyViewController.swift */,
+			);
+			name = MySurveysFeedVCGroup;
+			sourceTree = "<group>";
+		};
+		1DB2464F1A21FEDD00CA4860 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1DB246501A21FEEF00CA4860 /* UIColorExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		30B2E6CC2AF411E5DE3FDB9D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +169,8 @@
 		C4EFD1E91A18F15500C9D581 /* WhatAbout */ = {
 			isa = PBXGroup;
 			children = (
-				C4EFD20E1A18F62600C9D581 /* ViewControllers */,
+				1DB2464F1A21FEDD00CA4860 /* Extensions */,
+				C4EFD20E1A18F62600C9D581 /* TabBarViewControllers */,
 				C4EFD20D1A18F62000C9D581 /* Controllers */,
 				C4EFD20C1A18F61800C9D581 /* Model */,
 				C4EFD1EC1A18F15500C9D581 /* AppDelegate.swift */,
@@ -133,6 +179,7 @@
 				C4EFD1F51A18F15500C9D581 /* LaunchScreen.xib */,
 				C4EFD1EA1A18F15500C9D581 /* Supporting Files */,
 				C4EFD2131A18FAAD00C9D581 /* WhatAbout-Bridging-Header.h */,
+				1DB246581A24676E00CA4860 /* RLMSupport.swift */,
 			);
 			path = WhatAbout;
 			sourceTree = "<group>";
@@ -168,6 +215,8 @@
 				C4EFD2111A18F93400C9D581 /* Survey.swift */,
 				C4EFD2161A18FD1F00C9D581 /* Answer.swift */,
 				C4EFD2181A18FE6C00C9D581 /* WAUser.swift */,
+				1DB2464B1A21EEF400CA4860 /* WhatAboutModel.swift */,
+				1DB246601A27BFE200CA4860 /* ProcessSurveyModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -175,20 +224,23 @@
 		C4EFD20D1A18F62000C9D581 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1DB246521A223C6400CA4860 /* WADataController.swift */,
+				1DB246541A228DED00CA4860 /* WARemoteDataController.swift */,
+				1DB246561A22933B00CA4860 /* LoginController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		C4EFD20E1A18F62600C9D581 /* ViewControllers */ = {
+		C4EFD20E1A18F62600C9D581 /* TabBarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1DB2464E1A21F01600CA4860 /* MySurveysFeedVCGroup */,
+				1DB2464D1A21F00400CA4860 /* FeedVCGroup */,
 				C4EFD21F1A1900DE00C9D581 /* Cells */,
 				C4EFD21C1A19006E00C9D581 /* DataSource&Delegates */,
-				C4EFD21A1A19003600C9D581 /* SurveyFeedViewController.swift */,
-				C4EFD2221A194BB700C9D581 /* MySurveysViewController.swift */,
-				C4EFD2241A1955E400C9D581 /* AddSurveyViewController.swift */,
+				1DB2465C1A25D38E00CA4860 /* TakeSurveyViewController.swift */,
 			);
-			name = ViewControllers;
+			name = TabBarViewControllers;
 			sourceTree = "<group>";
 		};
 		C4EFD21C1A19006E00C9D581 /* DataSource&Delegates */ = {
@@ -196,6 +248,7 @@
 			children = (
 				C4EFD21D1A19009500C9D581 /* SurveyFeedManager.swift */,
 				C4EFD2261A1955FD00C9D581 /* AddSurveyTableManager.swift */,
+				1DB2465A1A25D34900CA4860 /* TakeSurveyTableManager.swift */,
 			);
 			name = "DataSource&Delegates";
 			sourceTree = "<group>";
@@ -207,6 +260,7 @@
 				C4EFD2281A19B95300C9D581 /* SurveyTextTableViewCell.swift */,
 				C4EFD22A1A19B9B800C9D581 /* AnswerTableViewCell.swift */,
 				C4EFD22C1A19BA3300C9D581 /* AddAnswerTableViewCell.swift */,
+				1DB2465E1A25D74C00CA4860 /* TakeSurveyCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -350,14 +404,24 @@
 				C4EFD21E1A19009500C9D581 /* SurveyFeedManager.swift in Sources */,
 				C4EFD1ED1A18F15500C9D581 /* AppDelegate.swift in Sources */,
 				C4EFD2191A18FE6C00C9D581 /* WAUser.swift in Sources */,
+				1DB246591A24676E00CA4860 /* RLMSupport.swift in Sources */,
+				1DB2465B1A25D34900CA4860 /* TakeSurveyTableManager.swift in Sources */,
 				C4EFD21B1A19003600C9D581 /* SurveyFeedViewController.swift in Sources */,
+				1DB2464C1A21EEF400CA4860 /* WhatAboutModel.swift in Sources */,
 				C4EFD2121A18F93400C9D581 /* Survey.swift in Sources */,
+				1DB246531A223C6400CA4860 /* WADataController.swift in Sources */,
 				C4EFD2251A1955E400C9D581 /* AddSurveyViewController.swift in Sources */,
 				C4EFD22D1A19BA3300C9D581 /* AddAnswerTableViewCell.swift in Sources */,
+				1DB246511A21FEEF00CA4860 /* UIColorExtensions.swift in Sources */,
 				C4EFD22B1A19B9B800C9D581 /* AnswerTableViewCell.swift in Sources */,
 				C4EFD2291A19B95300C9D581 /* SurveyTextTableViewCell.swift in Sources */,
+				1DB246611A27BFE200CA4860 /* ProcessSurveyModel.swift in Sources */,
+				1DB2465D1A25D38E00CA4860 /* TakeSurveyViewController.swift in Sources */,
+				1DB246571A22933B00CA4860 /* LoginController.swift in Sources */,
 				C4EFD2231A194BB700C9D581 /* MySurveysViewController.swift in Sources */,
+				1DB2465F1A25D74C00CA4860 /* TakeSurveyCell.swift in Sources */,
 				C4EFD2271A1955FD00C9D581 /* AddSurveyTableManager.swift in Sources */,
+				1DB246551A228DED00CA4860 /* WARemoteDataController.swift in Sources */,
 				C4EFD2211A19010600C9D581 /* SurveyFeedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

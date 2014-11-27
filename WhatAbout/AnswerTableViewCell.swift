@@ -8,9 +8,15 @@
 
 import UIKit
 
-class AnswerTableViewCell: UITableViewCell {
+protocol AnswerTableViewCellDelegate {
+  func answerTextAdded(cell:AnswerTableViewCell)
+}
+
+class AnswerTableViewCell: UITableViewCell, UITextFieldDelegate {
   
   @IBOutlet weak var answerText: UITextField!
+  
+  var delegate:AnswerTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -21,6 +27,12 @@ class AnswerTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state
+  }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    delegate?.answerTextAdded(self)
+    textField.resignFirstResponder()
+    return false
   }
   
 }

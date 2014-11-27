@@ -9,5 +9,14 @@
 import UIKit
 
 class ProcessSurveyModel: NSObject {
-   
+  let survey:Survey
+  
+  init(survey:Survey) {
+    self.survey = survey
+  }
+  
+  func recalculateAnswersRate() {
+    
+  }
+  
 }

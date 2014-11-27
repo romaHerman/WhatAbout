@@ -8,9 +8,15 @@
 
 import UIKit
 
-class SurveyTextTableViewCell: UITableViewCell {
+protocol SurveyTextTableViewCellDelegate {
+  func surveyQuestionEntered(question: String)
+}
+
+class SurveyTextTableViewCell: UITableViewCell, UITextViewDelegate {
   
   @IBOutlet weak var surveyText: UITextView!
+  
+  var delegate:SurveyTextTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -21,6 +27,16 @@ class SurveyTextTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state
+  }
+  
+  func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    if text == "\n" {
+      textView.resignFirstResponder()
+      delegate?.surveyQuestionEntered(textView.text)
+      return false;
+    }
+    
+    return true;
   }
   
 }

@@ -15,8 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    
+    WADataController.performRealmMigrationIfNeeded()
+    startParse()
+   
+    LoginController.enableAnonymousUser()
+    
     return true
+  }
+  
+  func startParse() {
+    Parse.setApplicationId("gEPKhQDJiHWDBMEArKOMqC7gOU8sqDjKJU1ubojq", clientKey: "vk02pyPqVfXmA3lhw4XB4xeOoTnWgBCBoBDproyR")
   }
 
   func applicationWillResignActive(application: UIApplication) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSurveyViewController: UIViewController {
+class AddSurveyViewController: UIViewController, AddSurveyTableManagerDelegate {
 
   required init(coder aDecoder: NSCoder) {
     surveyComposeManager = AddSurveyTableManager()
@@ -21,18 +21,41 @@ class AddSurveyViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    surveyComposeManager = AddSurveyTableManager(tableView: tableView)
-    surveyComposeManager.tableView.reloadData()
+    setUpTableViewManager()
     
-    // Do any additional setup after loading the view.
+    addSaveButton()
   }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  
+// MARK: Custom Methods
+  func addSaveButton() {
+    let saveButton = UIBarButtonItem(
+      title: "Save",
+      style: UIBarButtonItemStyle.Bordered,
+      target: self,
+      action: Selector("saveTapped"))
     
+    self.navigationItem.rightBarButtonItem = saveButton
+    self.navigationItem.rightBarButtonItem?.enabled = false
+  }
+  
+  func saveTapped() {
+    let surveyData = surveyComposeManager.getSurveyData()
+    WADataController.addSurveyInBackground(surveyData)
+  }
+  
+  func setUpTableViewManager() {
+    surveyComposeManager = AddSurveyTableManager(tableView: tableView)
+    surveyComposeManager.delegate = self
+    surveyComposeManager.tableView.reloadData()
+  }
 
-    /*
+// MARK: AddSurveyTableManagerDelegate
+  func canSaveSurvey(isCanSave:Bool) {
+    self.navigationItem.rightBarButtonItem?.enabled = isCanSave
+  }
+  
+  
+  /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

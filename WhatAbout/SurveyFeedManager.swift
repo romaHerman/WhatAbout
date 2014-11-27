@@ -9,11 +9,17 @@
 import UIKit
 import QuartzCore
 
+protocol SurveyFeedManagerDelegate {
+  func surveySelected(survey:Survey)
+}
+
 class SurveyFeedManager: NSObject, UITableViewDataSource, UITableViewDelegate {
   let tableView: UITableView!
-  let surveys = [ ]
+  var surveys:RLMResults?
 
-  let colors = ["483D8B", "00CED1","228B22","DAA520","CD5C5C" ,"ADD8E6", "F08080","20B2AA","87CEFA","9370DB","48D1CC","FFA500","2E8B57", "9ACD32"]
+  var delegate:SurveyFeedManagerDelegate?
+  
+  let colors = ["20B2AA"]//, "00CED1","228B22","DAA520","CD5C5C" ,"ADD8E6", "F08080","20B2AA","87CEFA","9370DB","48D1CC","FFA500","2E8B57", "9ACD32"]483D8B
   
   override init() {
     super.init()
@@ -24,15 +30,19 @@ class SurveyFeedManager: NSObject, UITableViewDataSource, UITableViewDelegate {
     tableView.delegate = self
     tableView.dataSource = self
     self.tableView = tableView
+    surveys = Survey.allObjects()
   }
-  
+// MARK: TableViewDartasource
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //return surveys.count
-    return 10
+    if let count = surveys?.count {
+      return Int(count)
+    }
+    
+    return 0
   }
   
   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -41,52 +51,33 @@ class SurveyFeedManager: NSObject, UITableViewDataSource, UITableViewDelegate {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("SurveyFeedTableViewCell") as SurveyFeedTableViewCell
-    //let survey = surveys[indexPath.row] as Survey
-    //cell.content.text = survey.surveyText
-    cell.content.text = "threre is a survey text pretty long because i want to now how it looks?"
-    cell.content.numberOfLines = 0
     
-    cell.contentBackground.layer.borderWidth = 1.0
-    cell.contentBackground.layer.cornerRadius = 12.0
-    cell.contentBackground.layer.borderColor = UIColor.whiteColor().CGColor
-    let randomNumber = arc4random_uniform(UInt32(colors.count))
-    cell.contentBackground.backgroundColor = UIColor(rgba: "#\(colors[Int(randomNumber)])")
-    
+    if let survey = surveys![UInt(indexPath.row)] as? Survey {
+      cell.content.text = survey.surveyText
+      cell.content.numberOfLines = 0
+      
+      cell.contentBackground.layer.borderWidth = 1.0
+      cell.contentBackground.layer.cornerRadius = 12.0
+      cell.contentBackground.layer.borderColor = UIColor.whiteColor().CGColor
+      let randomNumber = arc4random_uniform(UInt32(colors.count))
+      cell.contentBackground.backgroundColor = UIColor(rgba: "#\(colors[Int(randomNumber)])")
+    }
     return cell
   }
-}
 
-extension UIColor {
-  convenience init(rgba: String) {
-    var red:   CGFloat = 0.0
-    var green: CGFloat = 0.0
-    var blue:  CGFloat = 0.0
-    var alpha: CGFloat = 1.0
-    
-    if rgba.hasPrefix("#") {
-      let index   = advance(rgba.startIndex, 1)
-      let hex     = rgba.substringFromIndex(index)
-      let scanner = NSScanner(string: hex)
-      var hexValue: CUnsignedLongLong = 0
-      if scanner.scanHexLongLong(&hexValue) {
-        if countElements(hex) == 6 {
-          red   = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
-          green = CGFloat((hexValue & 0x00FF00) >> 8)  / 255.0
-          blue  = CGFloat(hexValue & 0x0000FF) / 255.0
-        } else if countElements(hex) == 8 {
-          red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
-          green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
-          blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
-          alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
-        } else {
-          print("invalid rgb string, length should be 7 or 9")
-        }
-      } else {
-        println("scan hex error")
-      }
-    } else {
-      print("invalid rgb string, missing '#' as prefix")
+//MARK: TableViewDelegate
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    if let survey = surveys![UInt(indexPath.row)] as? Survey {
+      delegate?.surveySelected(survey)
     }
-    self.init(red:red, green:green, blue:blue, alpha:alpha)
   }
+  
+//MARK: CustomMethods
+  func reloadData() {
+    surveys = Survey.allObjects()//.sortedResultsUsingProperty("creationDate", ascending: true)
+    tableView.reloadData()
+  }
+
+  // MySurveyDetails
 }

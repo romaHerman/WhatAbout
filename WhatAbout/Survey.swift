@@ -7,8 +7,10 @@
 //
 
 class Survey: RLMObject {
+  dynamic var surveyID = ""
   dynamic var creatorID = ""
   dynamic var surveyText = ""
   dynamic var creationDate = NSDate(timeIntervalSince1970: 1)
   dynamic var answers = RLMArray(objectClassName: Answer.className())
+  
 }

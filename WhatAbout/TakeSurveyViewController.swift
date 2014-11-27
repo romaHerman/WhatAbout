@@ -10,11 +10,24 @@ import UIKit
 
 class TakeSurveyViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+  required init(coder aDecoder: NSCoder) {
+    takeSurveyTableManager = TakeSurveyTableManager()
+    super.init(coder: aDecoder)
+    
+  }
+  var survey:Survey!
+  
+  @IBOutlet weak var tableView: UITableView!
+  var takeSurveyTableManager: TakeSurveyTableManager
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    takeSurveyTableManager = TakeSurveyTableManager(tableView: tableView)
+    takeSurveyTableManager.tableView.reloadData()
+    takeSurveyTableManager.survey = self.survey
+    // Do any additional setup after loading the view.
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
